@@ -14,7 +14,7 @@ export default function Topnav() {
         <div className="D_T"></div>
         <div className="D_T"></div>
       </div>
-      <div className="N_T">Hi, Louisa</div>
+      <div className="N_T">Hi, Archit</div>
       <div className="M_m" style={{backgroundImage:'url('+{avatar}+')'}}>
           <img src={avatar} alt='avatar'/>
       </div>
