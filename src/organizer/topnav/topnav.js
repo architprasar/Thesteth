@@ -3,6 +3,7 @@ import "../../css/topnav.css";
 
 export default function Topnav() {
     const [avatar,setAavatar] = useState('n');
+    const [name,setName] = useState('Archit');
     useEffect(() => {
         setAavatar('https://avatars.dicebear.com/api/female/pola.svg?mood[]=happy');
     },[])
@@ -14,7 +15,7 @@ export default function Topnav() {
         <div className="D_T"></div>
         <div className="D_T"></div>
       </div>
-      <div className="N_T">Hi, Archit</div>
+      <div className="N_T">Hi, {name}</div>
       <div className="M_m" style={{backgroundImage:'url('+{avatar}+')'}}>
           <img src={avatar} alt='avatar'/>
       </div>

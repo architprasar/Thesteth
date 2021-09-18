@@ -1,14 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
+@import './variables.css';
 .TopNav {
   width: 100%;
   height: 10%;
   background-color: transparent;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 20px;
-  
+  justify-content: center;
+  flex-shrink: 0;
 
 }
 /*menue button and avatar*/
@@ -16,7 +17,7 @@
   width: 2.5rem;
   max-height: 2.5rem;
   border-radius: 8px;
-  border: 1px solid #444444;
+  border: 1px solid var(--BoxMajor);
   overflow: hidden;
   flex-grow: 0;
   
@@ -29,6 +30,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--BoxMajor);
   font-family: "Raleway", sans-serif;
   font-size: 15px;
   font-style: normal;
@@ -48,6 +50,6 @@
   width: 6px;
   height: 6px;
   margin: 6px;
-  background-color: #444444;
+  background-color: var(--BoxMajor);
   border-radius: 50%;
 }

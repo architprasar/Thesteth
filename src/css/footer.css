@@ -1,0 +1,23 @@
+.Main_footer {
+  width: 100%;
+  height: 8%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row;
+}
+.Main_footer div {
+  width: 25%;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Main_footer div .Icon_container{
+    width: 80%;
+    height: 80%;
+    
+}
