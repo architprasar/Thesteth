@@ -1,12 +1,35 @@
-import React,{ useEffect,useState }  from "react";
+import React, { useEffect, useState } from "react";
 import "../../css/topnav.css";
+// function useHair() {
+//   const [hairs, useHairs] = useState("cap");
 
-export default function Topnav() {
-    const [avatar,setAavatar] = useState('n');
-    const [name,setName] = useState('Archit');
-    useEffect(() => {
-        setAavatar('https://avatars.dicebear.com/api/female/pola.svg?mood[]=happy');
-    },[])
+//   function setHair(gender) {
+//     if (gender == "male") {
+//       useHairs("cap");
+//     } else if (gender == "female") {
+//       useHairs("long");
+//     } else {
+//       useHairs("curlyBun");
+//     }
+//   }
+//   return { hairs, setHair };
+// }
+function Topnav() {
+  const [name, setName] = useState("archit");
+  const [gender, setGender] = useState("male");
+  useEffect(() => {
+    
+    
+
+  }, []);
+
+  // hair
+  const avatar =
+    "https://avatars.dicebear.com/api/" +
+    gender +
+    "/" +
+    name +
+    ".svg?mood[]=happy&hair[]=cap";
   return (
     <div className="TopNav">
       <div className="M_m d_T">
@@ -16,9 +39,11 @@ export default function Topnav() {
         <div className="D_T"></div>
       </div>
       <div className="N_T">Hi, {name}</div>
-      <div className="M_m" style={{backgroundImage:'url('+{avatar}+')'}}>
-          <img src={avatar} alt='avatar'/>
-      </div>
+      <div
+        className="M_m"
+        style={{ backgroundImage: "url(" + avatar + ")" }}
+      ></div>
     </div>
   );
 }
+export default Topnav;

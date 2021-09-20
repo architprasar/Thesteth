@@ -1,15 +1,20 @@
+@import './variables.css';
 .Main_footer {
   width: 100%;
-  height: 8%;
+  min-height:3.5em;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-flow: row;
+  position: fixed;
+  bottom: 0;
+  z-index:1;
+  background-color: var(--nav-bg-color);
 }
 .Main_footer div {
   width: 25%;
-  height: 100%;
+  height: 3.5em;
   background-color: transparent;
   display: flex;
   align-items: center;
@@ -21,3 +26,15 @@
     height: 80%;
     
 }
+
+
+.Main_footer div .Icon_container svg{
+  stroke:var(--BoxMajor);
+  max-height:70%;
+  max-width:70%;
+  min-width: 50%;
+  min-height:50%;
+}
+
+
+

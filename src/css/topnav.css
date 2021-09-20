@@ -1,55 +1,46 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
 @import './variables.css';
 .TopNav {
   width: 100%;
-  height: 10%;
-  background-color: transparent;
+  min-height: 4.2em;
   display: flex;
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
   justify-content: center;
-  flex-shrink: 0;
-
+  z-index: 1;
+  position: fixed;
+  background-color: var(--nav-bg-color);
 }
 /*menue button and avatar*/
 .M_m {
-  width: 2.5rem;
-  max-height: 2.5rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
   border-radius: 8px;
   border: 1px solid var(--BoxMajor);
   overflow: hidden;
   flex-grow: 0;
-  
+  flex-shrink: 0;
+  background-clip: border-box;
 }
+
 /*for name tag*/
 .N_T {
-  width: 30%;
   height: 3rem;
   background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--BoxMajor);
   font-family: "Raleway", sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 18px;
   letter-spacing: 0em;
   text-align: left;
   flex-grow: 1;
+  color:var(--FontMajor);
+  text-transform: capitalize;
 }
-/*for dot box*/
-.d_T {
-  display: flex;
-  flex-flow: row wrap;
-}
+
 /*for dots*/
-.D_T {
-  width: 6px;
-  height: 6px;
-  margin: 6px;
-  background-color: var(--BoxMajor);
-  border-radius: 50%;
-}
+

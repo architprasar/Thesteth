@@ -1,3 +1,10 @@
-:root{
-    --BoxMajor:#444444;
+:root {
+  --BoxMajor: #444444;
+  --BoxLight: #cecece;
+  --FontDarkMajor: #fff;
+  --FontDarkMinor: #f2f2f2;
+  --FontMajor: #444444;
+  --FontMinor: #929292;
+  --Raleway: "Raleway", sans-serif;
+  --nav-bg-color: #fff;
 }
