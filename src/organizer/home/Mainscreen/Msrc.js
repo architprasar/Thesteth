@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../css/mainsrc.css";
 import { SearchIco } from "../../footer/ico";
+import { useHistory, Switch, Route } from "react-router-dom";
+import LikedItem from "../LikedItems/LikedItem";
+import SearchResult from "../search/result/result";
 const TopBox = () => {
   return (
     <div className="message_Box">
-     
       <div className="ques">How are you feeling today?</div>
       <div className="greet">Good morning</div>
     </div>
@@ -12,6 +14,10 @@ const TopBox = () => {
 };
 
 const Search = () => {
+  const history = useHistory();
+  const changeRoute = (route = "search") => {
+    history.push(route);
+  };
   var TxtType = function (el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
@@ -66,20 +72,25 @@ const Search = () => {
     }
   }, []);
   return (
-    <div className="search_box_container">
+    <div
+      onClick={() => {
+        changeRoute();
+      }}
+      className="search_box_container"
+    >
       <div className="search_box">
         <div
           href=""
           class="typewrite"
           data-period="2000"
-          data-type='[ "Search Doctors and Symptoms...", "Gynecologist", "Dermatologist", "Orthopedist" ,"Family Physician","Pediatrician","Cardiologist","Immunologist"]'
+          data-type='[ "Search Doctors and Symptoms", "Gynecologist", "Dermatologist", "Orthopedist" ,"Family Physician","Pediatrician","Cardiologist","Immunologist"]'
         >
           <span class="wrap"></span>
         </div>
       </div>
-      <button className="search_button">
+      <div className="search_button">
         <SearchIco />
-      </button>
+      </div>
     </div>
   );
 };
@@ -87,7 +98,7 @@ const Search = () => {
 const MainCard = () => {
   return (
     <div className="card_container">
-      <div className="card"></div>
+      <div className="card" style={{ backgroundColor: "#F6E7E6" }}></div>
     </div>
   );
 };
@@ -95,29 +106,68 @@ const Suggestions = () => {
   return (
     <div className="suggestions_container">
       <div className="head">
-        <div>Suggestions</div>
-        <div></div>
-        <div>more</div>
+        <div className="small-title-font">Show more doctors</div>
       </div>
       <div className="body">
-        <div className="suggestions"></div>
-        <div className="suggestions"></div>
-        <div className="suggestions"></div>
-        <div className="suggestions"></div>
-        <div className="suggestions"></div>
-        <div className="suggestions"></div>
+        <div
+          className="suggestions"
+          style={{ backgroundColor: "#B9CCED" }}
+        ></div>
+        <div
+          className="suggestions"
+          style={{ backgroundColor: "#F6F6F6" }}
+        ></div>
+        <div
+          className="suggestions"
+          style={{ backgroundColor: "#FFE2E2" }}
+        ></div>
+        <div
+          className="suggestions"
+          style={{ backgroundColor: "#FFC7C7" }}
+        ></div>
+        <div
+          className="suggestions"
+          style={{ backgroundColor: "#AAAAAA" }}
+        ></div>
+        <div
+          className="suggestions"
+          style={{ backgroundColor: "#F6E5F5" }}
+        ></div>
+        <div
+          className="suggestions"
+          style={{ backgroundColor: "#FBF4F9" }}
+        ></div>
+        <div
+          className="suggestions"
+          style={{ backgroundColor: "#F6E7E6" }}
+        ></div>
       </div>
     </div>
   );
 };
-
-function Msrc() {
+function MainScrHome() {
   return (
     <div className="mnsrc">
       <TopBox />
       <Search />
       <MainCard />
       <Suggestions />
+    </div>
+  );
+}
+function Msrc() {
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
+    }
+    window.addEventListener("resize", handleResize);
+  }, []);
+  return (
+    <div className="Main_home" style={{ width: width, height: height }}>
+      <MainScrHome />
     </div>
   );
 }

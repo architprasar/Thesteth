@@ -6,4 +6,10 @@
     flex-grow: 0;
     margin-top:4.2em ;
     z-index: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
+.Main_home::-webkit-scrollbar {
+    display: none;
+  }
+  

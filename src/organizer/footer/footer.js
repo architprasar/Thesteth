@@ -1,24 +1,49 @@
 import React from "react";
 import { useState } from "react/cjs/react.development";
 import "../../css/footer.css";
+import { useHistory } from "react-router-dom";
 import { HomeIco, SearchIco, AddIco, HeartIcon, SettingsIco } from "./ico";
 export default function Footer() {
+  const history = useHistory();
+  const changeRoute = (route) => {
+    history.push(route);
+  };
 
   return (
     <div className="Main_footer ">
-      <div>
+      <div
+        onClick={() => {
+          changeRoute("/");
+        }}
+      >
         <HomeIco />
       </div>
-      <div>
+      <div
+        onClick={() => {
+          changeRoute("search");
+        }}
+      >
         <SearchIco />
       </div>
-      <div>
+      <div
+        onClick={() => {
+          changeRoute("/");
+        }}
+      >
         <AddIco />
       </div>
-      <div>
+      <div
+        onClick={() => {
+          changeRoute("/");
+        }}
+      >
         <HeartIcon />
       </div>
-      <div>
+      <div
+        onClick={() => {
+          changeRoute("/");
+        }}
+      >
         <SettingsIco />
       </div>
     </div>
