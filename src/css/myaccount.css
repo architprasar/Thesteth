@@ -58,11 +58,12 @@
 .myaccount-body .container .full .full-input,
 .half .full-input {
   outline: none;
-  border: 1px solid #bbbbbb;
+  border: 1px solid var(--BoxMinor);
   height: 70%;
   border-radius: 8px;
   font-size: 15px;
   padding: 0px 10px;
+  color:var(--FontMinor);
   background-color: transparent;
   transition: 0.1s;
 }

@@ -57,6 +57,7 @@
   font-size: 1em;
   font-weight: lighter;
   background-color: transparent;
+  color: var(--FontMajor);
   padding-left: 10px;
   font-family: var(--Raleway);
 }
@@ -227,13 +228,13 @@
   overflow-y: scroll;
   background-color: var(--background);
   
-  box-shadow: 2px 2px 8px rgba(165, 165, 165, 0.253);
+  box-shadow: 2px 2px 8px var(--BoxMinor);
 }
 
 .floating-list .item {
   width: 100%;
   height: 3em;
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 1px solid var(--BoxMinor);
   display: flex;
   align-items: center;
   padding-left: 10px;

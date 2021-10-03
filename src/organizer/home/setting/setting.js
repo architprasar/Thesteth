@@ -34,6 +34,7 @@ function ToogleButton(props) {
         onChange={() => {
           props.handleClick();
         }}
+        onClick={props.init}
       />
       <label for={props.id}></label>
     </div>
@@ -52,6 +53,7 @@ function SettingBody() {
     turnDarkOn(!dark);
   };
   const updateNotification = () => {
+    
     setNotification(!notification);
   };
   return (
@@ -80,6 +82,7 @@ function SettingBody() {
             id="notification"
             isToggleOn={notification}
             handleClick={updateNotification}
+            
           />
         </div>
       </div>
