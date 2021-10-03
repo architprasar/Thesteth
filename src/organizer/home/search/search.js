@@ -1,9 +1,42 @@
+import react from "react";
 import React, { useEffect, useState } from "react";
 import { useHistory, Route, Switch } from "react-router-dom";
 import "../../../css/search.css";
 import { SearchIco } from "../../footer/ico.js";
 import Backico from "./ico.js";
 import SearchResult from "./result/result";
+
+const FloatingList = (props) => {
+  const data = {
+    1: "Doctor",
+    2: "Fever",
+    3: "Covid",
+    4: "Immunologist",
+    5: "Family Physician",
+    6: "Cardiologist",
+    7: "Pediatrician",
+  };
+const history = useHistory();
+  return (
+    <div className="floating-list" id="floatinglist">
+      {Object.keys(data).map((key) => {
+        return (
+          <div
+            className="item"
+            key={key}
+            onClick={() => {
+              props.setQuerry(data[key]);
+              document.getElementById("search-bar").value = data[key];
+            history.push("/search/" + data[key]);
+            }}
+          >
+            {data[key]}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 // search bar
 function SearchBar(props) {
   const history = useHistory();
@@ -12,7 +45,7 @@ function SearchBar(props) {
     if (props.querry) {
       setQuerry(props.querry);
     }
-  }, []);
+  }, [querry]);
   // back button
   const backHandel = () => {
     history.goBack();
@@ -29,47 +62,66 @@ function SearchBar(props) {
       history.push("/search/" + querry);
     }
   };
+  function openFloatingList() {
+    document.getElementById("floatinglist").style.display = "block";
+  }
 
   return (
-    <div className="header">
-      <div
-        className="small-part back"
-        onClick={() => {
-          backHandel();
-        }}
-      >
-        <Backico />
-      </div>
-      <div className="big-part">
-        <div className="search-wrapper">
-          <input
-            className="search-input"
-            type="search"
-            placeholder="Search"
-            id="search-bar"
-            onKeyDown={(e) => {
-              if (e.keyCode === 13) {
-                searchHandel(e);
-              }
-            }}
-            onChange={(e) => {
-              searchQuerry(e);
-            }}
-          />
+    <React.Fragment>
+      <div className="header">
+        <div
+          className="small-part"
+          onClick={() => {
+            backHandel();
+          }}
+        >
+          <Backico />
         </div>
-        <div className="button-wrapper">
-          <button
-            className="search-button"
-            onClick={() => {
-              searchHandel();
-            }}
-          >
-            <SearchIco />
-          </button>
+        <div className="big-part">
+          <div className="search-wrapper">
+            <input
+              className="search-input"
+              autoComplete="off"
+              type="search"
+              placeholder="Search"
+              id="search-bar"
+              tabIndex="0"
+              onKeyDown={(e) => {
+                if (e.keyCode === 13) {
+                  searchHandel(e);
+                }
+              }}
+              onFocus={(e) => {
+                openFloatingList();
+              }}
+              onBlur={(e) => {
+                setTimeout(() => {
+                  document.getElementById("floatinglist").style.display =
+                    "none";
+                }, 500);
+              }}
+              onChange={(e) => {
+                searchQuerry(e);
+                document.getElementById("floatinglist").style.display = "block";
+              }}
+            />
+          </div>
+          <div className="button-wrapper">
+            <button
+              tabIndex="0"
+              className="search-button"
+              onClick={() => {
+                searchHandel();
+              }}
+            >
+              <SearchIco />
+            </button>
+          </div>
         </div>
+        <div className="small-part-2"></div>
       </div>
-      <div className="small-part-2"></div>
-    </div>
+      <FloatingList setQuerry={setQuerry} />
+    </React.Fragment>
   );
 }
 
@@ -134,19 +186,16 @@ function MainBody() {
   return (
     <div className="main-body">
       <SuggesBox />
-      <DocBoxes />
     </div>
   );
 }
 // global search box
 function Search() {
-  useEffect(() => {
-    document.getElementById("search-bar").focus();
-  }, []);
   return (
     <React.Fragment>
       <div className="search">
         <SearchBar />
+
         <MainBody />
       </div>
       <Switch>

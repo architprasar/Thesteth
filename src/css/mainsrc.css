@@ -51,6 +51,7 @@
   display: flex;
   flex-flow: column-reverse;
   padding-top: 5px;
+  color: var(--FontMajor);
   text-transform: capitalize;
 }
 

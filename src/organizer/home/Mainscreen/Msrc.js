@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../../css/mainsrc.css";
 import { SearchIco } from "../../footer/ico";
 import { useHistory, Switch, Route } from "react-router-dom";
-import LikedItem from "../LikedItems/LikedItem";
-import SearchResult from "../search/result/result";
+import { colorData } from "../../data";
 const TopBox = () => {
   return (
     <div className="message_Box">
@@ -102,6 +101,22 @@ const MainCard = () => {
     </div>
   );
 };
+
+const SuggestionBox = (props) => {
+  const history = useHistory();
+  const changeRoute = () => {
+    history.push(`/doc/${props.color}`);
+  };
+  return (
+    <div
+      onClick={() => {
+        changeRoute();
+      }}
+      className="suggestions"
+      style={{ backgroundColor: `#${props.color}` }}
+    ></div>
+  );
+};
 const Suggestions = () => {
   return (
     <div className="suggestions_container">
@@ -109,38 +124,9 @@ const Suggestions = () => {
         <div className="small-title-font">Show more doctors</div>
       </div>
       <div className="body">
-        <div
-          className="suggestions"
-          style={{ backgroundColor: "#B9CCED" }}
-        ></div>
-        <div
-          className="suggestions"
-          style={{ backgroundColor: "#F6F6F6" }}
-        ></div>
-        <div
-          className="suggestions"
-          style={{ backgroundColor: "#FFE2E2" }}
-        ></div>
-        <div
-          className="suggestions"
-          style={{ backgroundColor: "#FFC7C7" }}
-        ></div>
-        <div
-          className="suggestions"
-          style={{ backgroundColor: "#AAAAAA" }}
-        ></div>
-        <div
-          className="suggestions"
-          style={{ backgroundColor: "#F6E5F5" }}
-        ></div>
-        <div
-          className="suggestions"
-          style={{ backgroundColor: "#FBF4F9" }}
-        ></div>
-        <div
-          className="suggestions"
-          style={{ backgroundColor: "#F6E7E6" }}
-        ></div>
+        {Object.keys(colorData).map((key) => {
+          return <SuggestionBox color={colorData[key]} />;
+        })}
       </div>
     </div>
   );

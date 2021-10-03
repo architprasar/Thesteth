@@ -6,6 +6,7 @@ export default function Backico() {
     stroke: "none",
     height: "80%",
     width: "80%",
+    transform : "rotate(180deg)" 
   }
   return (
     <div className="Icon_container">

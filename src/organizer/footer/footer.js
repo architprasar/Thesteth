@@ -34,14 +34,14 @@ export default function Footer() {
       </div>
       <div
         onClick={() => {
-          changeRoute("/");
+          changeRoute("li");
         }}
       >
         <HeartIcon />
       </div>
       <div
         onClick={() => {
-          changeRoute("/");
+          changeRoute("/setting");
         }}
       >
         <SettingsIco />

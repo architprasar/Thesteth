@@ -1,12 +1,31 @@
-:root {
+/* :root {
   --BoxMajor: #444444;
   --BoxMinor: #cecece;
-  --FontDarkMajor: #fff;
-  --FontDarkMinor: #f2f2f2;
   --FontMajor: #444444;
-  --FontMinor: #929292;
+  --FontMinor: #868686;
   --Raleway: "Raleway", sans-serif;
   --nav-bg-color: #fff;
   --background: #fff;
   --searchbar: rgba(143, 209, 192, 0.11);
+  --active: #2d96f8;
+  --active-text: #fff;
+  --searchbar-focus: rgba(143, 209, 193, 0.349);
+  --placeholder:#9b9b9b;
+  --setting-item-background:#f2f2f283;
+} */
+
+:root {
+  --BoxMajor: #eeeeee;
+  --BoxMinor: #393e46;
+  --setting-item-background:#393e46;
+  --FontMajor: #eeeeee;
+  --FontMinor: #dadada;
+  --Raleway: "Raleway", sans-serif;
+  --nav-bg-color: #222831;
+  --background: #222831;
+  --searchbar: #393e46;
+  --active: #e4e4e4;
+  --active-text: #eeeeee;
+  --searchbar-focus: rgba(197, 197, 197, 0.349);
+  --placeholder:#e2e2e2;
 }

@@ -27,7 +27,7 @@ function SearchBar(props) {
   return (
     <div className="header">
       <div
-        className="small-part back"
+        className="small-part"
         onClick={() => {
           backHandel();
         }}
@@ -43,7 +43,7 @@ function SearchBar(props) {
             onFocus={(e) => {
               backtosearch();
             }}
-            value= {props.id}
+            value={props.id}
           />
         </div>
         <div className="button-wrapper">
@@ -62,8 +62,17 @@ function SearchBar(props) {
   );
 }
 const ResultItem = (props) => {
+  const history = useHistory();
+  const changePage = () => {
+    history.push(`/doc/result/${props.color}`);
+  };
   return (
-    <div className="result-item ">
+    <div
+      className="result-item "
+      onClick={() => {
+        changePage();
+      }}
+    >
       <div
         className="result-child"
         style={{ backgroundColor: props.color }}

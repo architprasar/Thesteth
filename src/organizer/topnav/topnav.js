@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "../../css/topnav.css";
 // function useHair() {
 //   const [hairs, useHairs] = useState("cap");
@@ -15,6 +16,7 @@ import "../../css/topnav.css";
 //   return { hairs, setHair };
 // }
 function Topnav() {
+  const history = useHistory()
   const [name, setName] = useState("archit");
   const [gender, setGender] = useState("male");
   useEffect(() => {
@@ -22,7 +24,9 @@ function Topnav() {
     
 
   }, []);
-
+  const open = () => {
+    history.push("/ma");
+  }
   // hair
   const avatar =
     "https://avatars.dicebear.com/api/" +
@@ -40,6 +44,9 @@ function Topnav() {
       </div>
       <div className="N_T">Hi, {name}</div>
       <div
+        onClick={() => {
+          history.push("/ma");
+        }}
         className="M_m"
         style={{ backgroundImage: "url(" + avatar + ")" }}
       ></div>
