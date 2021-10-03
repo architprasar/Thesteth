@@ -30,6 +30,7 @@
 
 .Main_footer div .Icon_container svg{
   stroke:var(--BoxMajor);
+  
   max-height:70%;
   max-width:70%;
   min-width: 50%;

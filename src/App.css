@@ -6,4 +6,10 @@
     display: flex;
     flex-flow: column;
     overflow: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
+.mainapp::-webkit-scrollbar {
+    display: none;
+  }
+  
