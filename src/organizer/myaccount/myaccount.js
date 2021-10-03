@@ -15,13 +15,13 @@ import {
 
 // input bar
 const Input = (props) => {
-  const updateState = (e) => {
-    props.updateState(e.target.value);
+  const updatestate = (e) => {
+    props.updatestate(e.target.value);
   };
 
   const checkValidation = (e) => {
     if (props.validation) {
-      props.validData(e.target.value, props.id, props.validation);
+      props.validdata(e.target.value, props.id, props.validation);
     }
   };
   
@@ -35,7 +35,7 @@ const Input = (props) => {
         next={props.tabIndex + 1}
         value={props.value !== "" ? props.value : null}
         onChange={(e) => {
-          updateState(e);
+          updatestate(e);
           checkValidation(e);
         }}
         {...props}
@@ -72,12 +72,12 @@ function FullInput(props) {
 
 // select
 function HalfInputSelect(props) {
-  const updateState = (e) => {
-    props.updateState(e.target.value);
+  const updatestate = (e) => {
+    props.updatestate(e.target.value);
   };
 
   const checkValidation = (e) => {
-    props.validData(e.target.value, props.id, props.validation);
+    props.validdata(e.target.value, props.id, props.validation);
   };
 
   return (
@@ -90,7 +90,7 @@ function HalfInputSelect(props) {
         tabIndex={props.tabIndex}
         value={props.value !== "" ? props.value : null}
         onChange={(e) => {
-          updateState(e);
+          updatestate(e);
           checkValidation(e);
         }}
         onBlur={(e) => {
@@ -183,52 +183,52 @@ function MyAccountBody() {
             placeholder="First Name"
             id="fname"
             labelname="First Name"
-            tabindex="0"
+            tabIndex="0"
             type="text"
             value={fname}
-            updateState={setFname}
+            updatestate={setFname}
             validation={NameValidation}
-            validData={checkValidation}
+            validdata={checkValidation}
           />
           <HalfInput
             placeholder="Last Name"
             id="lname"
             labelname="Last Name"
-            tabindex="1"
+            tabIndex="1"
             type="text"
             value={lname}
-            updateState={setLname}
+            updatestate={setLname}
           />
         </div>
         <FullInput
           placeholder="Email"
           id="email"
           labelname="Email"
-          tabindex="2"
+          tabIndex="2"
           type="email"
           value={email}
-          updateState={setEmail}
+          updatestate={setEmail}
           validation={EmailValidation}
-          validData={checkValidation}
+          validdata={checkValidation}
         />
         <FullInput
           placeholder="Phone No."
           id="phone"
           labelname="Phone No."
-          tabindex="3"
+          tabIndex="3"
           type="tel"
           value={phone}
-          updateState={setPhone}
+          updatestate={setPhone}
           maxlength={10}
           validation={PhoneValidation}
-          validData={checkValidation}
+          validdata={checkValidation}
         />
         <div className="container">
           <HalfInputSelect
             placeholder="Gender"
             id="gender"
             labelname="Gender"
-            tabindex="4"
+            tabIndex="4"
             type="select"
             options={{
               "select an option": "",
@@ -237,42 +237,42 @@ function MyAccountBody() {
               other: "o",
             }}
             value={gender}
-            updateState={setGender}
+            updatestate={setGender}
             validation={GenderValidation}
-            validData={checkValidation}
+            validdata={checkValidation}
           />
           <HalfInput
             placeholder="Age"
             id="age"
             labelname="Age"
-            tabindex="5"
+            tabIndex="5"
             type="number"
             value={age}
-            updateState={setAge}
+            updatestate={setAge}
             validation={AgeValidation}
-            validData={checkValidation}
+            validdata={checkValidation}
           />
         </div>
         <FullInput
           placeholder="Pincode"
           id="pincode"
           labelname="Pincode"
-          tabindex="6"
+          tabIndex="6"
           type="number"
           value={pin}
-          updateState={setPin}
+          updatestate={setPin}
           validation={PincodeValidation}
-          validData={checkValidation}
+          validdata={checkValidation}
         />
         <FullInput
           placeholder="Full Address"
           id="address"
           labelname="Full Address"
-          tabindex="7"
+          tabIndex="7"
           type="text"
           value={address}
-          updateState={setAddress}
-          validData={checkValidation}
+          updatestate={setAddress}
+          validdata={checkValidation}
           validation={AddressValidation}
         />
         <div className="container"></div>

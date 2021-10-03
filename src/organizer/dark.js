@@ -1,23 +1,57 @@
 function turnDarkOn(dark) {
   console.log("turnDarkOn");
   var r = document.querySelector(":root");
-  r.style.setProperty("--background", dark ? "#000" : "#fff");
-  r.style.setProperty("--BoxMajor", dark ? "#e6e6e6" : "#444444");
-  r.style.setProperty("--BoxMinor", dark ? "#cecece" : "#cecece");
-  r.style.setProperty("--FontMajor", dark ? "#e6e6e6" : "#444444");
-  r.style.setProperty("--FontMinor", dark ? "#e2e2e2" : "#868686");
-  r.style.setProperty("--nav-bg-color", dark ? "#000" : "#fff");
+  var rs = getComputedStyle(r);
+  r.style.setProperty(
+    "--background",
+    dark ? rs.getPropertyValue("--Dbackground") : "#fff"
+  );
+  r.style.setProperty(
+    "--BoxMajor",
+    dark ? rs.getPropertyValue("--DBoxMajor") : "#444444"
+  );
+  r.style.setProperty(
+    "--BoxMinor",
+    dark ? rs.getPropertyValue("--DBoxMinor") : "#cecece"
+  );
+  r.style.setProperty(
+    "--FontMajor",
+    dark ? rs.getPropertyValue("--DFontMajor") : "#444444"
+  );
+  r.style.setProperty(
+    "--FontMinor",
+    dark ? rs.getPropertyValue("--DFontMinor") : "#868686"
+  );
+  r.style.setProperty(
+    "--nav-bg-color",
+    dark ? rs.getPropertyValue("--Dnav-bg-color") : "#fff"
+  );
   r.style.setProperty(
     "--searchbar",
-    dark ? "rgba(255, 255, 255, 0.445)" : "rgba(143, 209, 192, 0.11)"
+    dark ? rs.getPropertyValue("--Dsearchbar") : "rgba(143, 209, 192, 0.11)"
   );
-  r.style.setProperty("--active", dark ? "#e4e4e4" : "#2d96f8");
+  r.style.setProperty(
+    "--active",
+    dark ? rs.getPropertyValue("--Dactive") : "#2d96f8"
+  );
   r.style.setProperty(
     "--searchbar-focus",
-    dark ? "rgba(197, 197, 197, 0.349)" : "rgba(143, 209, 193, 0.349)"
+    dark
+      ? rs.getPropertyValue("--Dsearchbar-focus")
+      : "rgba(143, 209, 193, 0.349)"
   );
-  r.style.setProperty("--placeholder", dark ? "#e2e2e2" : "#9b9b9b");
-  r.style.setProperty("--active-text", dark ? "rgb(0, 0, 0)" : "#fff");
+  r.style.setProperty(
+    "--placeholder",
+    dark ? rs.getPropertyValue("--Dplaceholder") : "#9b9b9b"
+  );
+  r.style.setProperty(
+    "--active-text",
+    dark ? rs.getPropertyValue("--Dactive-text") : "#fff"
+  );
+  r.style.setProperty(
+    "--setting-item-background",
+    dark ? rs.getPropertyValue("--Dsetting-item-background") : "#f2f2f283"
+  );
 }
 
 export { turnDarkOn };

@@ -1,4 +1,4 @@
-/* :root {
+:root {
   --BoxMajor: #444444;
   --BoxMinor: #cecece;
   --FontMajor: #444444;
@@ -10,22 +10,24 @@
   --active: #2d96f8;
   --active-text: #fff;
   --searchbar-focus: rgba(143, 209, 193, 0.349);
-  --placeholder:#9b9b9b;
-  --setting-item-background:#f2f2f283;
-} */
+  --placeholder: #9b9b9b;
+  --setting-item-background: #f2f2f283;
+  --blue: pink;
+}
 
+/*for dark color*/
 :root {
-  --BoxMajor: #eeeeee;
-  --BoxMinor: #393e46;
-  --setting-item-background:#393e46;
-  --FontMajor: #eeeeee;
-  --FontMinor: #dadada;
-  --Raleway: "Raleway", sans-serif;
-  --nav-bg-color: #222831;
-  --background: #222831;
-  --searchbar: #393e46;
-  --active: #e4e4e4;
-  --active-text: #eeeeee;
-  --searchbar-focus: rgba(197, 197, 197, 0.349);
-  --placeholder:#e2e2e2;
+  --DBoxMajor: #eeeeee;
+  --DBoxMinor: #393e46;
+  --Dsetting-item-background: #393e46;
+  --DFontMajor: #eeeeee;
+  --DFontMinor: #dadada;
+  --DRaleway: "Raleway", sans-serif;
+  --Dnav-bg-color: #222831;
+  --Dbackground: #222831;
+  --Dsearchbar: #393e46;
+  --Dactive: #e4e4e4;
+  --Dactive-text: #393e46;
+  --Dsearchbar-focus: rgba(197, 197, 197, 0.349);
+  --Dplaceholder: #e2e2e2;
 }

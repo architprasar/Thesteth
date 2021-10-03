@@ -10,15 +10,17 @@ import Doctor from "./organizer/doctor/doctor";
 import MyaAccount from "./organizer/myaccount/myaccount";
 import { useEffect } from "react";
 import { turnDarkOn } from "./organizer/dark";
+import IntitalizeFireBaseMessaging from "./organizer/firebase";
 
 function App() {
   useEffect(() => {
     const dark = localStorage.getItem("dark");
     console.log(dark);
-    if (dark==="true") {
+    if (dark === "true") {
       console.log("dark");
-     // turnDarkOn(true);
+      turnDarkOn(true);
     }
+    IntitalizeFireBaseMessaging();
   }, []);
   return (
     <Router>
