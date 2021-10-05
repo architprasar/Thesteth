@@ -46,6 +46,12 @@ function AddressValidation(address) {
   }
   return true;
 }
+function PasswordValidation(password) {
+    if (password.length < 8) {
+      return false;
+    }
+    return true;
+  }
 function GenderValidation(gender) {
   if (gender == "") {
     return false;
@@ -59,5 +65,6 @@ export {
   EmailValidation,
   AgeValidation,
   AddressValidation,
-  GenderValidation
+  GenderValidation,
+  PasswordValidation
 };

@@ -1,24 +1,35 @@
-import React from "react";
-import { useState } from "react/cjs/react.development";
+import React, { useEffect, useState } from "react";
+
 import "../../css/footer.css";
 import { useHistory } from "react-router-dom";
 import { HomeIco, SearchIco, AddIco, HeartIcon, SettingsIco } from "./ico";
 export default function Footer() {
   const history = useHistory();
+  const route = history.location.pathname;
   const changeRoute = (route) => {
+    setIsOpen(route.replace("/", ""));
     history.push(route);
   };
-
+  const [isOpen, setIsOpen] = useState(route.replace("/", ""));
+  useEffect(() => {
+    history.listen((location) => {
+      if (history.action === "POP") {
+        setIsOpen(location.pathname.replace("/", ""));
+      }
+    });
+  }, [isOpen]);
   return (
     <div className="Main_footer ">
       <div
+        class={isOpen === "" ? "active" : ""}
         onClick={() => {
-          changeRoute("/");
+          changeRoute("");
         }}
       >
         <HomeIco />
       </div>
       <div
+        class={isOpen === "search" ? "active" : ""}
         onClick={() => {
           changeRoute("search");
         }}
@@ -26,13 +37,15 @@ export default function Footer() {
         <SearchIco />
       </div>
       <div
+        class={isOpen === "a" ? "active" : ""}
         onClick={() => {
-          changeRoute("/");
+          changeRoute("a");
         }}
       >
         <AddIco />
       </div>
       <div
+        class={isOpen === "li" ? "active" : ""}
         onClick={() => {
           changeRoute("li");
         }}
@@ -40,8 +53,9 @@ export default function Footer() {
         <HeartIcon />
       </div>
       <div
+        class={isOpen === "setting" ? "active" : ""}
         onClick={() => {
-          changeRoute("/setting");
+          changeRoute("setting");
         }}
       >
         <SettingsIco />
