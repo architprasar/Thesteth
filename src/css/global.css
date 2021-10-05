@@ -27,16 +27,22 @@ button,
 select,
 span {
   font-family: var(--Raleway);
+  user-select: none;
 }
 
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   display: none;
 }
-input[type="number"]::-webkit-inner-spin-button{
+input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   display: none;
 }
-input::placeholder{
+input::placeholder {
   color: var(--placeholder);
+}
+.center-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

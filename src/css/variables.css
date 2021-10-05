@@ -12,7 +12,10 @@
   --searchbar-focus: rgba(143, 209, 193, 0.349);
   --placeholder: #9b9b9b;
   --setting-item-background: #f2f2f283;
-  --blue: pink;
+  --error : #ed4337;
+  --blackout:#00000067;
+  --df-hf:rgba(143, 209, 192, 0.11);
+
 }
 
 /*for dark color*/
@@ -21,7 +24,7 @@
   --DBoxMinor: #393e46;
   --Dsetting-item-background: #393e46;
   --DFontMajor: #eeeeee;
-  --DFontMinor: #dadada;
+  --DFontMinor: #a5a5a5;
   --DRaleway: "Raleway", sans-serif;
   --Dnav-bg-color: #222831;
   --Dbackground: #222831;
@@ -30,4 +33,5 @@
   --Dactive-text: #393e46;
   --Dsearchbar-focus: rgba(197, 197, 197, 0.349);
   --Dplaceholder: #e2e2e2;
+  --Ddf-hf:#393e46;
 }

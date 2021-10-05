@@ -1,5 +1,5 @@
 function turnDarkOn(dark) {
-  console.log("turnDarkOn");
+  
   var r = document.querySelector(":root");
   var rs = getComputedStyle(r);
   r.style.setProperty(
@@ -52,6 +52,39 @@ function turnDarkOn(dark) {
     "--setting-item-background",
     dark ? rs.getPropertyValue("--Dsetting-item-background") : "#f2f2f283"
   );
+  r.style.setProperty(
+    "--df-hf",
+    dark ? rs.getPropertyValue("--Ddf-hf") : "rgba(143, 209, 192, 0.11)"
+  );
+  document
+    .querySelector('meta[name="theme-color"]')
+    .setAttribute(
+      "content",
+      dark ? rs.getPropertyValue("--Dbackground") : "#fff"
+    );
 }
 
-export { turnDarkOn };
+
+
+const detectmedia = () => {
+    console.log("detect media");
+    if (localStorage.getItem("darkmodechoice") === "true") {
+      const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+      if (darkThemeMq.matches) {
+        turnDarkOn(true);
+      } else {
+        turnDarkOn(false);
+      }
+    } else {
+      const dark = localStorage.getItem("dark");
+      if (dark === "true") {
+        console.log("dark");
+        turnDarkOn(true);
+      }else{
+        console.log("light");
+        turnDarkOn(false);
+      }
+    }
+  };
+
+export { turnDarkOn, detectmedia };

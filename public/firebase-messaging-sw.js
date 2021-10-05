@@ -28,3 +28,4 @@ messaging.setBackgroundMessageHandler(function (payload) {
     notificationOption
   );
 });
+

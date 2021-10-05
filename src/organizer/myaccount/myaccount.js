@@ -16,15 +16,17 @@ import {
 // input bar
 const Input = (props) => {
   const updatestate = (e) => {
-    props.updatestate(e.target.value);
+    if (props.updatestate) {
+      props.updatestate(e.target.value);
+    }
   };
 
   const checkValidation = (e) => {
-    if (props.validation) {
+    if (props.validation && props.validdata) {
       props.validdata(e.target.value, props.id, props.validation);
     }
   };
-  
+
   return (
     <react.Fragment>
       <input
@@ -73,11 +75,15 @@ function FullInput(props) {
 // select
 function HalfInputSelect(props) {
   const updatestate = (e) => {
-    props.updatestate(e.target.value);
+    if (props.updatestate) {
+      props.updatestate(e.target.value);
+    }
   };
 
   const checkValidation = (e) => {
-    props.validdata(e.target.value, props.id, props.validation);
+    if (props.validdata) {
+      props.validdata(e.target.value, props.id, props.validation);
+    }
   };
 
   return (
@@ -134,8 +140,8 @@ function MyAccountBody() {
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
   const ifInvalid = (id) => {
-    document.getElementById(id).style.border = "2px solid red";
-    document.getElementById(`label${id}`).style.color = "red";
+    document.getElementById(id).style.border = "2px solid var(--error)";
+    document.getElementById(`label${id}`).style.color = "var(--error)";
     setTimeout(() => {
       document.getElementById(id).style.border = "";
       document.getElementById(`label${id}`).style.color = "";
@@ -299,5 +305,5 @@ function MyaAccount(props) {
     </div>
   );
 }
-
 export default MyaAccount;
+export { MyaAccount, HalfInputSelect, FullInput };

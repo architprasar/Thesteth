@@ -1,7 +1,7 @@
-@import './variables.css';
+@import "./variables.css";
 .Main_footer {
   width: 100%;
-  min-height:3.5em;
+  min-height: 3.5em;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -9,7 +9,7 @@
   flex-flow: row;
   position: fixed;
   bottom: 0;
-  z-index:1;
+  z-index: 1;
   background-color: var(--nav-bg-color);
 }
 .Main_footer div {
@@ -21,21 +21,36 @@
   justify-content: center;
 }
 
-.Main_footer div .Icon_container{
-    width: 80%;
-    height: 80%;
-    
+.Main_footer div .Icon_container {
+  width: 80%;
+  height: 80%;
 }
 
-
-.Main_footer div .Icon_container svg{
-  stroke:var(--BoxMajor);
-  
-  max-height:70%;
-  max-width:70%;
+.Main_footer div .Icon_container svg {
+  stroke: var(--BoxMajor);
+  fill: none;
+  max-height: 70%;
+  max-width: 70%;
   min-width: 50%;
-  min-height:50%;
+  min-height: 50%;
 }
 
+.Main_footer .active .Icon_container svg {
+  stroke: var(--active);
+  fill: var(--active);
+  max-height: 70%;
+  max-width: 70%;
+  min-width: 50%;
+  min-height: 50%;
+  transition: 0.5s;
+  
+}
+
+.Main_footer .active .doc svg line {
+  stroke: var(--background);
+}
+.Main_footer .active .setting svg circle {
+  fill: var(--background);
+}
 
 
