@@ -1,13 +1,13 @@
-import { React, useEffect, useState } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import "../../../css/setting.css";
 import { detectmedia, turnDarkOn } from "../../dark";
 import "../../../css/LikedItems.css";
 import { useHistory } from "react-router-dom";
 import { SettingsIco } from "../../footer/ico";
-import Backico, { Darkico, Mobileico, Nfico } from "./ico";
+import Backico, { Mobileico, Nfico } from "./ico";
 import Dialogue from "../../global/dialogue";
-
-
+import { logout } from "./logic.js";
+import { authContext } from "../../../App";
 function HeadBar(props) {
   // back button
 
@@ -43,6 +43,7 @@ function ToogleButton(props) {
   );
 }
 function SettingBody() {
+  const auth = useContext(authContext);
   const history = useHistory();
   const [dark, setDark] = useState(
     localStorage.getItem("dark") === "true" ? true : false
@@ -64,20 +65,32 @@ function SettingBody() {
   };
   return (
     <div className="body">
-      <div
-        className="item"
-        onClick={() => {
-          history.push("/ma");
-        }}
-      >
-        <div className="content">
-          <div>My Account</div>
-          <div className="small">Manage personal information</div>
+      {auth == "1" ? (
+        <div
+          className="item"
+          onClick={() => {
+            history.push("/ma");
+          }}
+        >
+          <div className="content">
+            <div>My Account</div>
+            <div className="small">Manage personal information</div>
+          </div>
+          <div className="icon">
+            <Backico />
+          </div>
         </div>
-        <div className="icon">
-          <Backico />
+      ) : (
+        <div
+          class="setting-lr"
+          onClick={() => {
+            history.push("login");
+          }}
+        >
+          Login or Register
         </div>
-      </div>
+      )}
+
       <div className="item">
         <div
           className="content"
@@ -102,8 +115,10 @@ function SettingBody() {
         </div>
       </div>
       <div className="item">
-        <div className="content"><div>Notifications</div>
-          <div className="small">Notification access</div></div>
+        <div className="content">
+          <div>Notifications</div>
+          <div className="small">Notification access</div>
+        </div>
         <div className="icon">
           <ToogleButton
             id="notification"
@@ -113,25 +128,38 @@ function SettingBody() {
         </div>
       </div>
       <div className="item">
-        <div className="content"><div>Feedback</div>
-          <div className="small">Rate us</div></div>
+        <div className="content">
+          <div>Feedback</div>
+          <div className="small">Rate us</div>
+        </div>
         <div className="icon">
           <Backico />
         </div>
       </div>
       <div className="item">
-        <div className="content"><div>Support</div>
-          <div className="small">Contact us</div></div>
+        <div className="content">
+          <div>Support</div>
+          <div className="small">Contact us</div>
+        </div>
         <div className="icon">
           <Backico />
         </div>
       </div>
-      <div className="item">
-        <div className="content">Logout</div>
-        <div className="icon">
-          <Backico />
+      {auth == "1" ? (
+        <div
+          className="item"
+          onClick={() => {
+            logout(history);
+          }}
+        >
+          <div className="content">Logout</div>
+          <div className="icon">
+            <Backico />
+          </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
@@ -188,11 +216,14 @@ function Setting() {
         id="device"
         isToggleOn={choice}
         handleClick={updatechoice}
+        close={true}
       />
+
       <Dialogue
         parentid="nf"
         title="Notifications"
         body={NotificationDeniedMessage}
+        close={true}
       />
     </div>
   );

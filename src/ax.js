@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 
   headers: {
     Authorization: localStorage.getItem("access_token")
-      ? "JWT " + localStorage.getItem("access_token")
+      ? "Bearer " + localStorage.getItem("access_token")
       : null,
     "Content-Type": "application/json",
     accept: "application/json",
@@ -23,7 +23,7 @@ axiosInstance.interceptors.response.use(
 
     if (
       error.response.status === 401 &&
-      originalRequest.url === baseURL + "/refresh"
+      originalRequest.url === baseURL + "token/refresh/"
     ) {
       localStorage.getItem("Auth_state")
         ? localStorage.removeItem("Auth_state")
@@ -46,7 +46,7 @@ axiosInstance.interceptors.response.use(
 
         if (tokenParts.exp > now) {
           return axiosInstance
-            .post("/refresh", { refresh: refreshToken })
+            .post("token/refresh/", { refresh: refreshToken })
             .then((response) => {
               localStorage.setItem("access_token", response.data.access);
               localStorage.setItem("refresh_token", response.data.refresh);

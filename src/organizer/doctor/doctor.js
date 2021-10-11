@@ -17,7 +17,8 @@ function CreateRipple(e) {
   ripple.className = "ripple";
   ripple.style.left =
     e.pageX - parent.offsetLeft + grandparent.scrollLeft + "px";
-  ripple.style.top = e.pageY - parent.offsetTop + "px";
+  ripple.style.top =
+    e.pageY - parent.offsetTop + document.body.scrollTop + "px";
   parent.appendChild(ripple);
   setTimeout(() => {
     parent.removeChild(ripple);

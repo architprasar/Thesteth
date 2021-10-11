@@ -27,15 +27,19 @@ function Dialogue(props) {
       <div className="dialogue-box">
         <div className="hf">
           <div className="hf-title">{props.title}</div>
-          <div
-            className="close"
-            onClick={() => {
-              document.getElementById(props.parentid).style.opacity = "0";
-              document.getElementById(props.parentid).style.zIndex = "-2000";
-            }}
-          >
-            <CloseIco />
-          </div>
+          {props.close ? (
+            <div
+              className="close"
+              onClick={() => {
+                document.getElementById(props.parentid).style.opacity = "0";
+                document.getElementById(props.parentid).style.zIndex = "-2000";
+              }}
+            >
+              <CloseIco />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="db">
           <Body {...props} />
