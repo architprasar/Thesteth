@@ -1,8 +1,13 @@
-import react, { useState } from "react";
+import react, { useContext, useState, useEffect } from "react";
 import React from "react";
+import { Redirect } from "react-router";
+
+import { authContext } from "../../App";
 import "../../css/myaccount.css";
+import { te } from "../global/errbox";
 import { HeadBar } from "../home/LikedItems/LikedItem";
 import Backico from "../home/search/ico";
+import { getProfileData, UpdateProfileData } from "./logic";
 import {
   AddressValidation,
   AgeValidation,
@@ -40,6 +45,7 @@ const Input = (props) => {
           updatestate(e);
           checkValidation(e);
         }}
+        disabled={props.disabled}
         {...props}
         onBlur={(e) => {
           checkValidation(e);
@@ -126,7 +132,6 @@ function MyAccountBody() {
     "fname",
     "age",
     "email",
-    "phone",
     "gender",
     "address",
     "pincode",
@@ -139,6 +144,19 @@ function MyAccountBody() {
   const [address, setAddress] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
+
+  useEffect(() => {
+    getProfileData(
+      setAge,
+      setGender,
+      setPhone,
+      setEmail,
+      setLname,
+      setFname,
+      setAddress,
+      setPin
+    );
+  }, []);
   const ifInvalid = (id) => {
     document.getElementById(id).style.border = "2px solid var(--error)";
     document.getElementById(`label${id}`).style.color = "var(--error)";
@@ -168,12 +186,13 @@ function MyAccountBody() {
   const validation = (e) => {
     e.preventDefault();
     console.log(valid);
-    if (valid.lenght === 0) {
-      return true;
+    if (valid.length === 0) {
+      UpdateProfileData(age, gender, email, lname, fname, address, pin);
     } else {
       for (let i = 0; i < valid.length; i++) {
         ifInvalid(valid[i]);
       }
+      te("Following fields are required")
       return false;
     }
   };
@@ -225,6 +244,7 @@ function MyAccountBody() {
           type="tel"
           value={phone}
           updatestate={setPhone}
+          disabled={true}
           maxlength={10}
           validation={PhoneValidation}
           validdata={checkValidation}
@@ -298,11 +318,18 @@ function MyAccountBody() {
 }
 
 function MyaAccount(props) {
+  const auth = useContext(authContext);
   return (
-    <div className="myaccount-main">
-      <HeadBar name="My Account" icon={Backico} back={true} />
-      <MyAccountBody />
-    </div>
+    <React.Fragment>
+      {auth == "1" ? (
+        <div className="myaccount-main">
+          <HeadBar name="My Account" icon={Backico} back={true} />
+          <MyAccountBody />
+        </div>
+      ) : (
+        <Redirect to="/login" />
+      )}
+    </React.Fragment>
   );
 }
 export default MyaAccount;

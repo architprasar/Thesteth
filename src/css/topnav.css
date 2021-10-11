@@ -20,6 +20,8 @@
   overflow: hidden;
   flex-grow: 0;
   flex-shrink: 0;
+  font-weight:bold;
+  color: var(--BoxMajor);
   background-clip: border-box;
 }
 

@@ -13,7 +13,7 @@ export default function Footer() {
   const [isOpen, setIsOpen] = useState(route.replace("/", ""));
   useEffect(() => {
     history.listen((location) => {
-      if (history.action === "POP") {
+      if (history.action === "POP" || history.action === "PUSH") {
         setIsOpen(location.pathname.replace("/", ""));
       }
     });

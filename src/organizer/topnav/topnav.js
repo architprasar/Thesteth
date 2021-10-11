@@ -1,32 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { authContext } from "../../App";
 import "../../css/topnav.css";
-// function useHair() {
-//   const [hairs, useHairs] = useState("cap");
 
-//   function setHair(gender) {
-//     if (gender == "male") {
-//       useHairs("cap");
-//     } else if (gender == "female") {
-//       useHairs("long");
-//     } else {
-//       useHairs("curlyBun");
-//     }
-//   }
-//   return { hairs, setHair };
-// }
 function Topnav() {
-  const history = useHistory()
+  const history = useHistory();
+  const auth = useContext(authContext);
   const [name, setName] = useState("archit");
   const [gender, setGender] = useState("male");
-  useEffect(() => {
-    
-    
-
-  }, []);
+  useEffect(() => {}, []);
   const open = () => {
     history.push("/ma");
-  }
+  };
   // hair
   const avatar =
     "https://avatars.dicebear.com/api/" +
@@ -48,8 +33,19 @@ function Topnav() {
           history.push("/ma");
         }}
         className="M_m"
-        style={{ backgroundImage: "url(" + avatar + ")" }}
-      ></div>
+        style={
+          auth == "1"
+            ? { backgroundImage: "url(" + avatar + ")" }
+            : {
+                border: "none",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }
+        }
+      >
+        {auth == "1" ? "" : "Login"}
+      </div>
     </div>
   );
 }

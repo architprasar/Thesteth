@@ -30,6 +30,10 @@
   border-radius: 8px;
   color: var(--FontMajor);
 }
+.Setting-Main .body .item:last-child{
+  margin-bottom: 40%;
+  flex-shrink: 0;
+}
 .Setting-Main .body .item .content {
   height: 100%;
   width: 80%;
@@ -163,4 +167,22 @@ input[type="checkbox"]:checked + label::after {
 .di svg {
   width: 60%;
   height: 60%;
+}
+
+
+
+.setting-lr{
+  width: 100%;
+  height: 10%;
+  min-height: 2em;
+  display: flex;
+  margin-bottom: 10%;
+  flex-flow: row;
+  overflow: hidden;
+  background-color: var(--setting-item-background);
+  display: flex;align-items: center;justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  color: var(--FontMajor);
+ 
 }

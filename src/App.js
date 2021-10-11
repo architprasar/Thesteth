@@ -8,12 +8,17 @@ import { LikedItem } from "./organizer/home/LikedItems/LikedItem";
 import Setting from "./organizer/home/setting/setting";
 import Doctor from "./organizer/doctor/doctor";
 import MyaAccount from "./organizer/myaccount/myaccount";
-import { useEffect } from "react";
+import { createContext, useContext, useEffect } from "react";
 import { detectmedia } from "./organizer/dark";
 import IntitalizeFireBaseMessaging, { messaging } from "./organizer/firebase";
 
 import LoginAndRegister from "./organizer/Lr/login";
+import Popup, { SPopup } from "./organizer/global/errbox";
 
+// context
+export const authContext = createContext(
+  localStorage.getItem("access_token") ? 1 : 0
+);
 function App() {
   function messf() {
     messaging.onMessage(function (payload) {
@@ -50,12 +55,11 @@ function App() {
   useEffect(() => {
     messf();
     detectmedia();
+    document.title = "TheSteth";
     IntitalizeFireBaseMessaging();
-
-    
   }, []);
   return (
-    <Router>
+    <authContext.Provider value={localStorage.getItem("access_token") ? 1 : 0}>
       <div className="mainapp ">
         <Topnav />
         <Switch>
@@ -68,8 +72,10 @@ function App() {
           <Route path="/" component={LoginAndRegister} />
         </Switch>
         <Footer />
+        <Popup />
+        <SPopup />
       </div>
-    </Router>
+    </authContext.Provider>
   );
 }
 
