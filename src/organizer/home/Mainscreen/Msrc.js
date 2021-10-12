@@ -148,7 +148,9 @@ function Msrc() {
     function handleResize() {
       setWidth(window.innerWidth);
       setHeight(window.innerHeight);
+      
     }
+    document.title = "Thesteth";
     window.addEventListener("resize", handleResize);
   }, []);
   return (

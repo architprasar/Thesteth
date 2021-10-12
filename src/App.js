@@ -10,7 +10,7 @@ import Doctor from "./organizer/doctor/doctor";
 import MyaAccount from "./organizer/myaccount/myaccount";
 import { createContext, useContext, useEffect } from "react";
 import { detectmedia } from "./organizer/dark";
-import IntitalizeFireBaseMessaging, { messaging } from "./organizer/firebase";
+import IntitalizeFireBaseMessaging from "./organizer/firebase";
 
 import LoginAndRegister from "./organizer/Lr/login";
 import Popup, { SPopup } from "./organizer/global/errbox";
@@ -21,6 +21,7 @@ export const authContext = createContext(
 );
 function App() {
   function messf() {
+    const messaging = window.firebase.messaging();
     messaging.onMessage(function (payload) {
       console.log(payload);
       const notificationOption = {
@@ -53,10 +54,13 @@ function App() {
     });
   }
   useEffect(() => {
-    messf();
+    if (window.firebase.messaging.isSupported()) {
+      IntitalizeFireBaseMessaging();
+      messf();
+    }
     detectmedia();
     document.title = "TheSteth";
-    IntitalizeFireBaseMessaging();
+   
   }, []);
   return (
     <authContext.Provider value={localStorage.getItem("access_token") ? 1 : 0}>

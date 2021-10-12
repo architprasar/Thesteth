@@ -100,6 +100,7 @@ function SearchResult() {
     window.addEventListener("resize", () => {
       setHeight(window.innerHeight - 58 - 0.6 * 16);
     });
+    document.title = id + " - Search Result";
   }, []);
   return (
     <div className="search">

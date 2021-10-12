@@ -284,6 +284,9 @@ function BookNow() {
 // main body
 function Doctor() {
   const { DOCID } = useParams();
+  useEffect(() => {
+    document.title = DOCID + " - Doctor";
+  }, []);
   return (
     <div className="main-doc-body">
       <HeadBar name="Doctor" icon={Backico} back={true} />

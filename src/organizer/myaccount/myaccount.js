@@ -192,7 +192,7 @@ function MyAccountBody() {
       for (let i = 0; i < valid.length; i++) {
         ifInvalid(valid[i]);
       }
-      te("Following fields are required")
+      te("Following fields are required");
       return false;
     }
   };
@@ -319,6 +319,9 @@ function MyAccountBody() {
 
 function MyaAccount(props) {
   const auth = useContext(authContext);
+  useEffect(() => {
+    document.title = "My Account";
+  }, []);
   return (
     <React.Fragment>
       {auth == "1" ? (

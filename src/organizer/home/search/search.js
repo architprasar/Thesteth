@@ -191,6 +191,9 @@ function MainBody() {
 }
 // global search box
 function Search() {
+  useEffect(() => {
+    document.title = "Search";
+  }, []);
   return (
     <React.Fragment>
       <div className="search">

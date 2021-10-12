@@ -96,7 +96,7 @@ input:focus + label::before {
 .lr-forgot {
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   padding-right: 30px;
 }
 
@@ -108,7 +108,7 @@ input:focus + label::before {
   flex-direction: row;
   background-color: var(--searchbar);
   border-radius: 8px;
-  border:1px solid var(--active);
+  border: 1px solid var(--active);
   overflow: hidden;
 }
 .otpinput input {
@@ -119,8 +119,6 @@ input:focus + label::before {
   outline: none;
   float: left;
   transition: 0.3s;
-  
- 
 }
 .otpinput button {
   width: 20%;
@@ -139,7 +137,7 @@ input:focus + label::before {
   width: 70%;
   height: 70%;
   margin: 0px 0px;
-    stroke-width: 1px;
+  stroke-width: 1px;
   stroke: var(--active-text);
 }
 .oi {
@@ -151,8 +149,7 @@ input:focus + label::before {
   transform: translateY(12px);
 }
 
-
 #rotppropmt,
-#rphonepropmt{
-    width: 100%;
+#rphonepropmt {
+  width: 100%;
 }

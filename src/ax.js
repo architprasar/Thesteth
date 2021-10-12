@@ -1,9 +1,9 @@
 import axios from "axios";
-
+const pw = "https://architprasar.pythonanywhere.com/api/";
 const baseURL = "http://127.0.0.1:8000/api/";
 
 const axiosInstance = axios.create({
-  baseURL: baseURL,
+  baseURL: pw,
   timeout: 5000,
   withCredentials: true,
 

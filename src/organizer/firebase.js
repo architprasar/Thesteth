@@ -8,16 +8,16 @@ const config = {
   measurementId: "G-TQR2F07DFE",
 };
 window.firebase.initializeApp(config);
-const messaging = window.firebase.messaging();
 
 function IntitalizeFireBaseMessaging() {
+  const messaging = window.firebase.messaging();
   var token = messaging
     .requestPermission()
     .then(function () {
       return messaging.getToken();
     })
     .then(function (token) {
-      
+      console.log(token);
     })
     .catch(function (reason) {
       console.log(reason);
@@ -25,4 +25,3 @@ function IntitalizeFireBaseMessaging() {
 }
 
 export default IntitalizeFireBaseMessaging;
-export { messaging };

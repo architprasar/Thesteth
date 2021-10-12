@@ -54,6 +54,7 @@ function LikedItem() {
     window.addEventListener("resize", () => {
       setHeight(window.innerHeight - 58 - 0.6 * 16);
     });
+    document.title = "Liked Items";
   }, []);
   return (
     <div className="Liked-Main">

@@ -162,7 +162,7 @@ input[type="checkbox"]:checked + label::after {
   display: flex;
 
   align-items: top;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .di svg {
   width: 60%;

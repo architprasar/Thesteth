@@ -198,7 +198,10 @@ function Setting() {
   const [choice, setChoice] = useState(
     localStorage.getItem("darkmodechoice") === "true" ? true : false
   );
-  useEffect(() => {}, [choice]);
+  useEffect(() => {
+    detectmedia();
+    document.title = "Settings";
+  }, [choice]);
   const updatechoice = () => {
     setChoice(!choice);
     localStorage.setItem("darkmodechoice", !choice);
